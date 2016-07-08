@@ -20,8 +20,12 @@ post '/create_message' do
     content: params[:content],
     author: params[:author]
     )
-  @message.save
-  redirect '/messages'
+  if @message.save
+    redirect '/messages'
+  else
+    @message.errors.messages
+    erb :'messages/new'
+  end
 end
 
 get '/messages/:id' do
