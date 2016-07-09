@@ -17,7 +17,6 @@ end
 
 post '/create_message' do
   @message = Message.new(
-    title: params[:title],
     content: params[:content],
     author: params[:author]
     )
