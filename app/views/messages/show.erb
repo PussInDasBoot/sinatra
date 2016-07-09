@@ -10,3 +10,22 @@
 
 <hr/>
 <a href="/messages">Back to all messages</a>
+
+<h2>Other posts from this author</h2>
+<p>
+<ul>
+<% Message.where.not(id: @message.id).where(author: @message.author).each do |result| %>
+  <li> <%= result.content %> </li>
+  <% end %>
+</p>
+<!-- 
+<% if @message.errors.any? %>
+  <div>
+    <strong>Please fix these issues with your message:</strong>
+    <ul>
+      <% @message.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </p>
+  </div>
+<% end %> -->
